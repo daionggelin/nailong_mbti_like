@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FDF2E0">
 <title>你是哪种 AI 程序员？| DataClawHub</title>
-<meta name="description" content="4 道情境题，认出你属于哪一类智能体开发者。结果生成在你的手机上，不收集个人信息。">
+<meta name="description" content="四道题，看看你跟 AI 一起干活时是哪一路。结果生成在你的手机上，不收集个人信息。">
 <style>
 /* ============ 设计变量 ============ */
 :root{
@@ -117,6 +117,12 @@ body{
 }
 
 /* ============ 答题 ============ */
+/* 题目改短后卡片会明显变矮，靠垂直居中撑住整屏，避免上重下空 */
+#quiz{
+  min-height:calc(100vh - 74px);
+  min-height:calc(100dvh - 74px);
+  display:flex; flex-direction:column; justify-content:center;
+}
 #quiz .q-top{
   display:flex; align-items:center; justify-content:space-between;
   font-size:12.5px; color:var(--muted); letter-spacing:.6px;
@@ -126,12 +132,12 @@ body{
 .track i{display:block; height:100%; width:0; border-radius:99px;
   background:linear-gradient(90deg,#E2A268,var(--accent)); transition:width .32s ease}
 #eyebrow{font-size:22px; font-weight:900; letter-spacing:-.3px; color:#A9581F; margin:0 0 10px}
-#prompt{margin:0 0 22px; font-size:16.5px; line-height:1.78; color:var(--ink)}
-#answers{display:flex; flex-direction:column; gap:11px}
+#prompt{margin:0 0 24px; font-size:19px; line-height:1.72; color:var(--ink); font-weight:600}
+#answers{display:flex; flex-direction:column; gap:12px}
 .answer{
   display:block; width:100%; text-align:left; cursor:pointer;
-  font-family:inherit; font-size:15px; line-height:1.72; color:var(--ink);
-  padding:15px 17px; border-radius:var(--radius-sm);
+  font-family:inherit; font-size:16px; line-height:1.72; color:var(--ink);
+  padding:17px 18px; border-radius:var(--radius-sm);
   background:var(--card-2);
   border:1.5px solid var(--line);
   box-shadow:var(--shadow-sm);
@@ -307,7 +313,7 @@ body{
     </div>
 
     <h1 class="hero-h1">你是哪种<em>AI 程序</em>员？</h1>
-    <p class="hero-sub">4 道情境题，从你做事的方式里，认出你属于哪一类智能体开发者。</p>
+    <p class="hero-sub">四道题，看看你跟 AI 一起干活时是哪一路。</p>
 
     <div class="strip">
       <img src="./assets/dtro.jpg" alt="">
@@ -421,18 +427,18 @@ body{
 
   /* ---------- 题库：4 题，每维 1 题，各标注所属极 ---------- */
   var QUESTIONS = [
-    { q:'你在做一个「区域仓补货建议」智能体。上线前，团队要你确认规则逻辑。你更可能先做哪件事？',
-      a:[ {t:'拉出近一年订单、库存与在途数据，看清分布和异常点，再据此定规则', p:'D'},
-          {t:'先和一线仓管聊一轮，形成对问题的整体判断，再去数据里找印证', p:'N'} ] },
-    { q:'智能体需要新增「PDF 提单字段抽取」能力。评审时你倾向推荐哪条路径？',
-      a:[ {t:'接入社区已有的开源工具或 MCP 服务，两周内可完成验证', p:'T'},
-          {t:'自研一套抽取流程，可控性与后续迭代空间更大', p:'B'} ] },
-    { q:'你有两周时间做一个物流场景的智能体。两种起点，你更愿意选哪个？',
-      a:[ {t:'从社区已有的成果出发，在它基础上做出一个更成熟的版本', p:'R'},
-          {t:'从一个没人做过的细分问题出发，哪怕只能做到初步可用', p:'P'} ] },
-    { q:'一个「跨境单证全流程校验」任务交到你手上，周期两周。你更可能怎么开始？',
-      a:[ {t:'先把流程拆成若干环节，明确每一环由哪个工具或智能体负责', p:'O'},
-          {t:'先挑出最容易出错的那一环，集中精力把它做扎实', p:'H'} ] }
+    { q:'AI 很肯定地说：这家店超好吃。',
+      a:[ {t:'先翻评分和差评', p:'D'},
+          {t:'去了再说，尝了才知道', p:'N'} ] },
+    { q:'要写一段自我介绍，憋了半小时。',
+      a:[ {t:'让 AI 先写，我再改', p:'T'},
+          {t:'自己写完，让 AI 挑错', p:'B'} ] },
+    { q:'周末了，不知道去哪。',
+      a:[ {t:'去朋友推荐过的', p:'R'},
+          {t:'自己挑一个没听说过的', p:'P'} ] },
+    { q:'四个人，明天要交，现在还没开始。',
+      a:[ {t:'先分工，写清谁做什么', p:'O'},
+          {t:'直接帮团队啃最难的那块', p:'H'} ] }
   ];
 
   /* ---------- 16 型数据 ---------- */
